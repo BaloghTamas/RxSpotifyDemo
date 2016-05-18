@@ -1,14 +1,14 @@
-# Spotify Demo
+# Rx Spotify Demo
 
-[![Build Status](https://travis-ci.org/BaloghTamas/SpotifyDemo.svg?branch=master)](https://travis-ci.org/BaloghTamas/SpotifyDemo)
+[![Build Status](https://travis-ci.org/BaloghTamas/RxSpotifyDemo.svg?branch=master)](https://travis-ci.org/BaloghTamas/RxSpotifyDemo)
 
-Spotify Demo app v1.1, using Spotify artists API.
-This is a fork of *peekler/MobileSoftwareSystems*, with an altered folder structure, demonstrating Travis-CI integration.
+Rx Spotify Demo app v1.0, using Spotify artists API.
+This is a fork of *peekler/MobileSoftwareSystems*, with an altered folder structure, demonstrating RxJava, MVP and testing.
 
 Features demonstrated:
-- Automated build of an Android project
-- Email notification for failing builds
-- Lint static code check
+- Model View Presenter Pattern used
+- RxJava used for HTTP communication
+- Dagger Used for Dependency Injection
 - Automated Unit Testing with JUnit 4 + Robolectric
-- Automated UI Testing with Espresso + Automated Emulator configuration and running
-- Release deploy to GitHub releases
+- Automated UI Testing with Espresso
+
