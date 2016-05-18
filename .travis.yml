@@ -14,6 +14,12 @@ android:
     - addon-google_apis-google-19
     - sys-img-armeabi-v7a-android-21
 
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+      - oracle-java7-installer
+
 env:
   global:
     # Add this
@@ -28,7 +34,7 @@ before_script:
   - adb wait-for-device
   - adb shell input keyevent 82 &
 
-script: ./gradlew :app:build :app:connectedDebugAndroidTest
+script: ./gradlew :app:build :app:connectedDebugAndroidTest -PJAVA8_HOME='/usr/lib/jvm/java-8-oracle'   -PJAVA7_HOME='/usr/lib/jvm/java-7-oracle'
 
 deploy:
   provider: releases
