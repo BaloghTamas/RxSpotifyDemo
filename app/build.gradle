@@ -22,7 +22,7 @@ android {
         release {
             storeFile file("../RxSpotifyDemo.keystore")
             storePassword System.getenv('STORE_PASSWORD')
-            keyAlias "SpotifyDemo"
+            keyAlias "RxSpotifyDemo"
             keyPassword System.getenv('KEY_PASSWORD')
         }
     }
