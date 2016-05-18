@@ -17,10 +17,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("../SpotifyDemo_debug.keystore")
+            storeFile file("../RxSpotifyDemo_debug.keystore")
         }
         release {
-            storeFile file("../SpotifyDemo.keystore")
+            storeFile file("../RxSpotifyDemo.keystore")
             storePassword System.getenv('STORE_PASSWORD')
             keyAlias "SpotifyDemo"
             keyPassword System.getenv('KEY_PASSWORD')
