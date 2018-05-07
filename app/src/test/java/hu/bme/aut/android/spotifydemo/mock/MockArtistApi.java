@@ -16,69 +16,69 @@ import retrofit2.Response;
 import retrofit2.http.Query;
 
 public class MockArtistApi implements ArtistsApi {
-	@Override
-	public Call<ArtistsResult> getArtists(@Query("query") String artist, @Query("type") String type, @Query("offset") int offset, @Query("limit") int limit) {
-		final ArtistsResult artistsResult = new ArtistsResult();
-		Artists artists = new Artists();
+    @Override
+    public Call<ArtistsResult> getArtists(String auth, @Query("query") String artist, @Query("type") String type, @Query("offset") int offset, @Query("limit") int limit) {
+        final ArtistsResult artistsResult = new ArtistsResult();
+        Artists artists = new Artists();
 
-		List<Item> items = new ArrayList<Item>();
+        List<Item> items = new ArrayList<Item>();
 
-		Item item = new Item();
-		item.setName("AC/DC");
-		item.setPopularity(99);
+        Item item = new Item();
+        item.setName("AC/DC");
+        item.setPopularity(99);
 
-		List<Image> images = new ArrayList<Image>();
-		Image image = new Image();
-		image.setUrl("https://i.scdn.co/image/a16c5d95ede008ec905d6ca6d1b5abbf39ad4566");
-		image.setWidth(1000);
-		image.setHeight(1500);
-		images.add(image);
+        List<Image> images = new ArrayList<Image>();
+        Image image = new Image();
+        image.setUrl("https://i.scdn.co/image/a16c5d95ede008ec905d6ca6d1b5abbf39ad4566");
+        image.setWidth(1000);
+        image.setHeight(1500);
+        images.add(image);
 
-		item.setImages(images);
-		items.add(item);
+        item.setImages(images);
+        items.add(item);
 
-		artists.setItems(items);
-		artistsResult.setArtists(artists);
+        artists.setItems(items);
+        artistsResult.setArtists(artists);
 
-		Call<ArtistsResult> call = new Call<ArtistsResult>() {
-			@Override
-			public Response<ArtistsResult> execute() throws IOException {
-				return Response.success(artistsResult);
-			}
+        Call<ArtistsResult> call = new Call<ArtistsResult>() {
+            @Override
+            public Response<ArtistsResult> execute() throws IOException {
+                return Response.success(artistsResult);
+            }
 
-			@Override
-			public void enqueue(Callback<ArtistsResult> callback) {
+            @Override
+            public void enqueue(Callback<ArtistsResult> callback) {
 
-			}
+            }
 
-			@Override
-			public boolean isExecuted() {
-				return false;
-			}
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
 
-			@Override
-			public void cancel() {
+            @Override
+            public void cancel() {
 
-			}
+            }
 
-			@Override
-			public boolean isCanceled() {
-				return false;
-			}
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
 
-			@Override
-			public Call<ArtistsResult> clone() {
-				return null;
-			}
+            @Override
+            public Call<ArtistsResult> clone() {
+                return null;
+            }
 
-			@Override
-			public Request request() {
-				return null;
-			}
-		};
+            @Override
+            public Request request() {
+                return null;
+            }
+        };
 
-		return call;
-	}
+        return call;
+    }
 
 
 }

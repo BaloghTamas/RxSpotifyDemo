@@ -1,24 +1,26 @@
 package hu.bme.aut.android.spotifydemo.ui;
 
-import rx.Observable;
-import rx.Single;
-import rx.Subscription;
-import rx.functions.Func0;
-import rx.subscriptions.CompositeSubscription;
+
+import java.util.concurrent.Callable;
+
+import io.reactivex.Flowable;
+import io.reactivex.Single;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 public class RxPresenter<S extends Screen> extends Presenter<S> {
-    protected CompositeSubscription compositeSubscription;
+    protected CompositeDisposable compositeSubscription;
 
-    protected static <T> Observable<T> observable(Func0<T> func0) {
-        return Observable.defer(() -> {
-            T result = func0.call();
-            return Observable.just(result);
+    protected static <T> Flowable<T> observable(Callable<T> callable) {
+        return Flowable.defer(() -> {
+            T result = callable.call();
+            return Flowable.just(result);
         });
     }
 
-    protected static <T> Single<T> single(Func0<T> func0) {
+    protected static <T> Single<T> single(Callable<T> callable) {
         return Single.defer(() -> {
-            T result = func0.call();
+            T result = callable.call();
             return Single.just(result);
         });
     }
@@ -26,21 +28,21 @@ public class RxPresenter<S extends Screen> extends Presenter<S> {
     @Override
     public void attach(S screen) {
         super.attach(screen);
-        if (compositeSubscription != null && !compositeSubscription.isUnsubscribed()) {
-            compositeSubscription.unsubscribe();
+        if (compositeSubscription != null && !compositeSubscription.isDisposed()) {
+            compositeSubscription.dispose();
         }
-        compositeSubscription = new CompositeSubscription();
+        compositeSubscription = new CompositeDisposable();
     }
 
     @Override
     public void detach() {
-        if (compositeSubscription != null && !compositeSubscription.isUnsubscribed()) {
-            compositeSubscription.unsubscribe();
+        if (compositeSubscription != null && !compositeSubscription.isDisposed()) {
+            compositeSubscription.dispose();
         }
         super.detach();
     }
 
-    protected void subscribe(Subscription subscription) {
-        compositeSubscription.add(subscription);
+    protected void subscribe(Disposable disposable) {
+        compositeSubscription.add(disposable);
     }
 }

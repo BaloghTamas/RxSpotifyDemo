@@ -9,18 +9,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class NetworkModule {
+
     @Provides
     @Singleton
-    public Retrofit provideRetrofit() {
+    public ArtistsApi provideArtistsApi() {
+
         return new Retrofit.Builder()
-                .baseUrl(NetworkConfig.ENDPOINT_ADDRESS)
+                .baseUrl(NetworkConfig.API_ENDPOINT_ADDRESS)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                .build()
+                .create(ArtistsApi.class);
     }
 
     @Provides
     @Singleton
-    public ArtistsApi provideArtistsApi(Retrofit retrofit) {
-        return retrofit.create(ArtistsApi.class);
+    public TokenApi provideTokenApi() {
+
+        return new Retrofit.Builder()
+                .baseUrl(NetworkConfig.TOKEN_ENDPOINT_ADDRESS)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(TokenApi.class);
     }
 }

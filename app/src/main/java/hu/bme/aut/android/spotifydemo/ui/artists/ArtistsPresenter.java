@@ -8,8 +8,8 @@ import hu.bme.aut.android.spotifydemo.di.Network;
 import hu.bme.aut.android.spotifydemo.interactor.artists.ArtistsInteractor;
 import hu.bme.aut.android.spotifydemo.model.Item;
 import hu.bme.aut.android.spotifydemo.ui.RxPresenter;
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import static hu.bme.aut.android.spotifydemo.SpotifyDemoApplication.injector;
 

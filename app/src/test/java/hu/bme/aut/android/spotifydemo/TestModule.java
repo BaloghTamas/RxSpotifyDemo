@@ -7,10 +7,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import hu.bme.aut.android.spotifydemo.di.Network;
-import hu.bme.aut.android.spotifydemo.ui.artists.ArtistsPresenter;
-import hu.bme.aut.android.spotifydemo.ui.main.MainPresenter;
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 @Module
 public class TestModule {
